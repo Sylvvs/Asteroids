@@ -76,7 +76,7 @@ class Shine {
         translate(this.position.x, this.position.y);
         rotate(this.rotation)
         scale(1+(this.lifetime*0.001)+(75*0.025))
-        let col = color(255,255,255,250-(1.55*this.lifetime))
+        let col = color(255,255,255,200-((this.lifetime**0.5)*14))
         stroke(col)
         this.rotation += this.rotationSpeed;
   
