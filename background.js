@@ -22,6 +22,8 @@ class Star {
         this.shiningTimer = 500;
         this.shine = undefined;
         this.shiningAnimTime = 150;
+        this.opacity = floor(random(50,256));
+        this.size = random(0.8,1.2)
     }
 
 
@@ -34,8 +36,10 @@ class Star {
         this.intialRotationSpeed = this.rotationSpeed;
         push();
         strokeWeight(2)
+        stroke(255,255,255,this.opacity)
         translate(this.position.x, this.position.y);
         rotate(this.rotation)
+        scale(this.size)
         if (this.shiningTimer < this.shiningAnimTime) this.shiningAnimtion()
         this.rotation += this.rotationSpeed;
   
@@ -57,17 +61,19 @@ class Star {
         this.rotationSpeed*2;
         if (this.shiningTimer < this.shiningAnimTime/2) scale(1+this.shiningTimer*0.025)
         if (this.shiningTimer > this.shiningAnimTime/2) scale(1+(this.shiningAnimTime-this.shiningTimer)*0.025)
-        if (this.shiningTimer == this.shiningAnimTime/2) this.shine = new Shine(this.position, this.rotation, this.rotationSpeed);
+        if (this.shiningTimer == this.shiningAnimTime/2) this.shine = new Shine(this.position, this.rotation, this.rotationSpeed, this.opacity, this.size);
         this.shiningTimer++
     }
 }
 
 class Shine {
-    constructor(position, rotation, rotationSpeed) {
+    constructor(position, rotation, rotationSpeed, opacity, size) {
         this.position = position;
         this.rotation = rotation;
         this.rotationSpeed = rotationSpeed;
         this.lifetime = 0;
+        this.opacity = opacity;
+        this.size = size;
     }
 
     draw() {
@@ -76,7 +82,8 @@ class Shine {
         translate(this.position.x, this.position.y);
         rotate(this.rotation)
         scale(1+(this.lifetime*0.001)+(75*0.025))
-        let col = color(255,255,255,200-((this.lifetime**0.5)*14))
+        scale(this.size)
+        let col = color(255,255,255,this.opacity-55-((this.lifetime**0.5)*14)*(this.opacity/255))
         stroke(col)
         this.rotation += this.rotationSpeed;
   
