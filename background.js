@@ -28,7 +28,7 @@ class Star {
     draw() {
         if (this.shine != undefined) {
             this.shine.draw();
-            if (this.shine.lifetime > 100) this.shine = undefined;
+            if (this.shine.lifetime > 200) this.shine = undefined;
         }
         if (floor(random(0,10000))==5) this.shiningTimer = 0;
         this.intialRotationSpeed = this.rotationSpeed;
@@ -75,8 +75,8 @@ class Shine {
         strokeWeight(2)
         translate(this.position.x, this.position.y);
         rotate(this.rotation)
-        scale(1+(500*0.025))
-        let col = color(255,255,255,255-(2.55*this.lifetime))
+        scale(1+(this.lifetime*0.001)+(75*0.025))
+        let col = color(255,255,255,250-(1.55*this.lifetime))
         stroke(col)
         this.rotation += this.rotationSpeed;
   
