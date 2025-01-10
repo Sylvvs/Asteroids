@@ -2,7 +2,7 @@ let spillet;
 let c;
 
 function preload() {
-  tilemap = loadImage('../assets/images/tilemap.png')
+  tilemap = loadImage('assets/images/tilemap.png')
 }
 
 function setup() {

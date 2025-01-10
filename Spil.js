@@ -6,6 +6,8 @@ class Spil {
 
       this.skibet = new Skib(this.meteorer);
 
+      this.BG = new BG();
+
       this.startRound()
     }
 
@@ -15,7 +17,7 @@ class Spil {
     }
 
     spawnMeteors() {
-      for(let i = 0; i < floor(1.2**this.round); i++){
+      for(let i = 0; i < floor(2.4**this.round); i++){
         this.meteorer.push(new Meteor(random(-500,500), 12, random(10,30), 
         createVector(random(100,width/2), random(100,height-100)), createVector(random(-1,1), random(-1,1)))); 
       }
@@ -32,6 +34,7 @@ class Spil {
     }
     
     drawSpil(){
+      this.BG.draw();
       if(this.skibet.life > 0)
       this.skibet.drawSkib();
       else{

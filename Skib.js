@@ -48,7 +48,7 @@ class Skib {
           i--;  // tæller i ned for at undgå risiko for at springe element over
         }
       }
-      if (this.invincible && frameCount % 5 == 0) {
+      if (this.invincible && frameCount % 3 == 0) {
         this.flashShip = !this.flashShip
       }
       

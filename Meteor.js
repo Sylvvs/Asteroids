@@ -40,19 +40,19 @@ class Meteor {
       noStroke();
     }
   
-    kollisionKant() { //adjusted 15 to 10
+    kollisionKant() { //adjusted 10 to radius/2
       if (this.position.x - this.radius/2 < 0) {
         this.velocity.x *= -1;
-        this.position.x = 15;
+        this.position.x = this.radius/2;
       } else if (this.position.x + this.radius/2 > width) {
         this.velocity.x *= -1;
-        this.position.x = width-15;
+        this.position.x = width-this.radius/2;
       } else if (this.position.y - this.radius/2 < 0) {
         this.velocity.y *= -1;
-        this.position.y = 15;
+        this.position.y = this.radius/2;
       } else if (this.position.y + this.radius/2 > height) {
         this.velocity.y *= -1;
-        this.position.y = height-15;
+        this.position.y = height-this.radius/2;
       }
     }
   }
