@@ -81,7 +81,7 @@ class Shine {
         strokeWeight(2)
         translate(this.position.x, this.position.y);
         rotate(this.rotation)
-        scale(1+(this.lifetime*0.001)+(75*0.025))
+        scale(1+(this.lifetime*0.01)+(75*0.025))
         scale(this.size)
         let col = color(255,255,255,this.opacity-55-((this.lifetime**0.5)*14)*(this.opacity/255))
         stroke(col)
