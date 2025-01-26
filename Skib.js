@@ -122,6 +122,7 @@ class Skib {
           this.vinkelSkib += PI;
           this.life--;
           this.lastFrameHit = frameCount;
+          // 
         } else if (this.kugler.length>0) {
           for (let j = 0; j< this.kugler.length; j++) {
             const k = this.kugler[j];

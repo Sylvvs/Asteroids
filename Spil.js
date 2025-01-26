@@ -34,6 +34,7 @@ class Spil {
     }
     
     drawSpil(){
+      console.log(frameRate())
       this.BG.draw();
       if(this.skibet.life > 0)
       this.skibet.drawSkib();
