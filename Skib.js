@@ -15,6 +15,8 @@ class Skib {
       this.invincible = false;
       this.flashTimer = -50;
       this.flashShip = false;
+
+      this.particleEmitter = new Emitter([color(247, 237, 45),color(247, 58, 45),color(18, 11, 11)],5);
     }
   
     update() {
@@ -35,6 +37,7 @@ class Skib {
         this.velocity.y *= this.accel;
         this.position.add(this.velocity);
       }
+      this.particleEmitter.update();
       let iFrames = 30;
       this.invincible = (this.lastFrameHit + iFrames > frameCount) ? true : false;
     }
@@ -76,6 +79,7 @@ class Skib {
             this.vinkelSkib += 0.1;
         } 
         if (keyIsDown(87) || keyIsDown(38)) { // W eller UpArrow
+          this.particleEmitter.spawnParticle(7, this.vinkelSkib, this.position.copy());
             if (this.accel < 6) {
                 this.accel += 1;
             }
