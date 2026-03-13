@@ -86,7 +86,7 @@ class Skib {
         } 
         if (keyIsDown(90)) { // Z
             if (this.skudCounter > 0 && this.skudKlar) {
-                this.kugler.push(new Kugle(this.position, this.vinkelSkib, this.velocity.copy()));
+                this.kugler.push(new Spiral(this.position, this.vinkelSkib, this.velocity.copy()));
                 this.skudCounter -= 1;
                 this.skudKlar = false;
             }
