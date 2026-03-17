@@ -84,14 +84,21 @@ class Skib {
                 this.accel += 1;
             }
         } 
-        if (keyIsDown(90)) { // Z
+        if (keyIsDown(88)) { // X
             if (this.skudCounter > 0 && this.skudKlar) {
                 this.kugler.push(new Spiral(this.position, this.vinkelSkib, this.velocity.copy()));
                 this.skudCounter -= 1;
                 this.skudKlar = false;
             }
+        }
+        if (keyIsDown(90)) { // Z
+          if (this.skudCounter > 0 && this.skudKlar) {
+                this.kugler.push(new Kugle(this.position, this.vinkelSkib, this.velocity.copy()));
+                this.skudCounter -= 1;
+                this.skudKlar = false;
         } 
     }
+  }
   
     kollisionKant() {
       if (this.position.x < 0) {

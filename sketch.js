@@ -27,10 +27,10 @@ function draw() {
 }
 
 function keyReleased() {
-  if (key != 'z') return
-  spillet.skibet.skudKlar = true;
+  if (key == 'z' || key == "x") {
+    spillet.skibet.skudKlar = true;
 }
-
+}
 function mousePressed() {
   if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
     let fs = fullscreen();

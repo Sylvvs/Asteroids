@@ -14,7 +14,6 @@ class Spiral {
         this.position.x = this.t * cos(this.t) + this.initialPosition.x
         this.position.y = this.t * sin(this.t) + this.initialPosition.y
         this.t = (500 - this.life)/4
-        console.log(this.position)
         this.life--
     }
     drawKugle(){
