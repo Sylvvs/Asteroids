@@ -27,7 +27,7 @@ function draw() {
 }
 
 function keyReleased() {
-  if (key == 'z' || key == "x") {
+  if (key == 'z' || key == "x" || key == "c") {
     spillet.skibet.skudKlar = true;
 }
 }

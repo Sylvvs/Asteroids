@@ -97,8 +97,16 @@ class Skib {
                 this.skudCounter -= 1;
                 this.skudKlar = false;
         } 
+      }
+        if (keyIsDown(67)) { // C
+           if (this.skudCounter > 0 && this.skudKlar) {
+                this.kugler.push(new Spiral(this.position, this.vinkelSkib, this.velocity.copy()));
+                this.kugler.push(new Kugle(this.position, this.vinkelSkib, this.velocity.copy()))
+                this.skudCounter -= 1;
+                this.skudKlar = false;
+        }
     }
-  }
+}
   
     kollisionKant() {
       if (this.position.x < 0) {
@@ -155,6 +163,21 @@ class Skib {
                 i--;
               }
             }
+          }
+        }
+      }
+      for (let i = 0; i < this.kugler.length; i++) {
+        let k = this.kugler[i]
+        for (let j = 0; j < this.kugler.length; j++){
+          if (this.kugler[j] == this.kugler[i]) continue;
+          let ku = this.kugler[j]
+          // console.log(k,ku)
+          if (k.position.x == ku.position.x && k.position.y == ku.position.y){
+            push()
+            fill(100,255,100)
+            circle(k.position.x, ku.position.y, 2)
+            pop()
+            console.log('ding')
           }
         }
       }

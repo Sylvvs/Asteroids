@@ -7,13 +7,13 @@ class Kugle{
       this.kugleVinkel = vinkel;
       this.radius = 7;
       this.accel = 8;
-      this.life = 150;
+      this.life = 250;
       this.t = 0
     }
     update(){
       this.position.x = this.t * cos(this.kugleVinkel) + this.initialPosition.x
       this.position.y = this.t * sin(this.kugleVinkel) + this.initialPosition.y
-      this.t += 5
+      this.t = (250 - this.life)
       this.life--;
     }
     
