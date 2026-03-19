@@ -32,11 +32,11 @@ function keyReleased() {
 }
 }
 function mousePressed() {
-  if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
+ /* if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
     let fs = fullscreen();
-    fullscreen(!fs);
+    fullscreen(!fs);*/
   }
-}
+
 
 function windowResized() {
   resizeCanvas(windowWidth-100, windowHeight-100);

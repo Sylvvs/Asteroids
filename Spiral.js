@@ -6,7 +6,7 @@ class Spiral {
         this.life = 250;
         this.t = 0
         this.a = 6
-        this.b = 0
+        this.b = vinkel
     }
     update(){
         this.position.x = this.a * this.t * cos(this.t + this.b) + this.initialPosition.x
