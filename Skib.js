@@ -85,14 +85,32 @@ class Skib {
                 this.accel += 1;
             }
         } 
-        if (keyIsDown(90)) { // Z
+        if (keyIsDown(88)) { // X
             if (this.skudCounter > 0 && this.skudKlar) {
-                this.kugler.push(new Kugle(this.position, this.vinkelSkib, this.velocity.copy()));
+                this.kugler.push(new Spiral(this.position, this.vinkelSkib, this.velocity.copy()));
                 this.skudCounter -= 1;
                 this.skudKlar = false;
             }
+        }
+        if (keyIsDown(90)) { // Z
+          if (this.skudCounter > 0 && this.skudKlar) {
+                this.kugler.push(new Kugle(this.position, this.vinkelSkib, this.velocity.copy()));
+                this.skudCounter -= 1;
+                this.skudKlar = false;
         } 
+      }
+        if (keyIsDown(67)) { // C
+           if (this.skudCounter > 0 && this.skudKlar) {
+                let spiral = new Spiral(this.position, this.vinkelSkib, this.velocity.copy())
+                this.kugler.push(spiral)
+                let kugle = new Kugle(this.position, this.vinkelSkib, this.velocity.copy())
+                this.kugler.push(kugle)
+                this.skudCounter -= 1;
+                this.skudKlar = false;
+                this.findIntersection(kugle,spiral)
+        }
     }
+}
   
     kollisionKant() {
       if (this.position.x < 0) {
@@ -127,6 +145,7 @@ class Skib {
           this.vinkelSkib += PI;
           this.life--;
           this.lastFrameHit = frameCount;
+          // 
         } else if (this.kugler.length>0) {
           for (let j = 0; j< this.kugler.length; j++) {
             const k = this.kugler[j];
@@ -151,6 +170,47 @@ class Skib {
           }
         }
       }
+      for (let i = 0; i < this.kugler.length; i++) {
+        let k = this.kugler[i]
+        for (let j = 0; j < this.kugler.length; j++){
+          if (this.kugler[j] == this.kugler[i]) continue;
+          let ku = this.kugler[j]
+          let dx = k.position.x - ku.position.x;
+          let dy = k.position.y - ku.position.y;
+          let dist = sqrt(dx*dx + dy*dy);
+          if (dist < k.radius + ku.radius) {
+            push()
+            fill(100,100,100)
+            strokeWeight(10)
+            point(k.position.x,k.position.y)
+            pop()
+            }
+          }
+        }
+      }
+
+  findIntersection(k1, k2) {
+  let tolerance = 1; // hvor tæt de skal være
+  let intersections = []
+  for (let t = 0; t < 250; t += 0.1) {
+    let x1 = t * cos(k1.kugleVinkel) + k1.initialPosition.x;
+    let y1 = t * sin(k1.kugleVinkel) + k1.initialPosition.y;
+
+    let ts = t / 6;
+    let x2 = k2.a * ts * cos(ts + k2.b) + k2.initialPosition.x;
+    let y2 = k2.a * ts * sin(ts + k2.b) + k2.initialPosition.y;
+
+    let dx = x1 - x2;
+    let dy = y1 - y2;
+    let dist = sqrt(dx*dx + dy*dy);
+
+    if (dist < tolerance) {
+      intersections.push(t)
     }
   }
+  console.log(intersections)
+  return null;
+  } 
+}
+  
   

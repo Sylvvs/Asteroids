@@ -27,16 +27,16 @@ function draw() {
 }
 
 function keyReleased() {
-  if (key != 'z') return
-  spillet.skibet.skudKlar = true;
+  if (key == 'z' || key == "x" || key == "c") {
+    spillet.skibet.skudKlar = true;
 }
-
+}
 function mousePressed() {
-  if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
+ /* if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
     let fs = fullscreen();
-    fullscreen(!fs);
+    fullscreen(!fs);*/
   }
-}
+
 
 function windowResized() {
   resizeCanvas(windowWidth-100, windowHeight-100);

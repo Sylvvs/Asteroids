@@ -34,7 +34,7 @@ class Star {
         }
         if (floor(random(0,10000))==5) this.shiningTimer = 0;
         this.intialRotationSpeed = this.rotationSpeed;
-        push();
+        push(); 
         strokeWeight(2)
         stroke(255,255,255,this.opacity)
         translate(this.position.x, this.position.y);
