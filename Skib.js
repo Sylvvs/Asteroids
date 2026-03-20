@@ -41,6 +41,7 @@ class Skib {
       let iFrames = 30;
       this.invincible = (this.lastFrameHit + iFrames > frameCount) ? true : false;
     }
+
     drawSkib() {
       for (let i = 0; i< this.kugler.length; i++) {
         const k = this.kugler[i];
